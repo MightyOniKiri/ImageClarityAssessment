@@ -71,5 +71,3 @@ print(f"测试图片数：{len(results)}")
 print(f"模糊被放行：{blurry_as_clear}/{blurry_total}")
 print(f"清晰被误删：{clear_as_blurry}/{clear_total}")
 print(f"准确率：{accuracy:.2%}")
-
-errors = results[results["actual"] != results["predicted"]]
