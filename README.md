@@ -12,7 +12,7 @@
 
 评估集的标签保存在对应 Excel 中，`-1` 表示清晰，`1` 表示模糊。
 
-数据来源：[CERTH 官方页面](https://mklab.iti.gr/results/certh-image-blur-dataset/)。数据仅保存在本地。
+数据来源：[CERTH 官方页面](https://mklab.iti.gr/results/certh-image-blur-dataset/)。
 
 ## 项目实现内容
 
