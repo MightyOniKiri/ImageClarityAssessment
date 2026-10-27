@@ -1,2 +1,11 @@
-# 数据集：忽略 data 文件夹中的内容
-CERTH_ImageBlurDataset/**
+# Local dataset and archives
+/CERTH_ImageBlurDataset/
+*.zip
+*.rar
+
+# Python and editor files
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.idea/

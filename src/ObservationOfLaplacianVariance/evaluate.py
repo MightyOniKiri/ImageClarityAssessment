@@ -1,3 +1,4 @@
+import argparse
 import cv2
 import numpy as np
 from pathlib import Path
@@ -9,7 +10,11 @@ project_dir = Path(__file__).resolve().parent.parent.parent
 
 # 测自然模糊时用 "NaturalBlurSet"
 # 测人工模糊时用 "DigitalBlurSet"
-dataset_name = "NaturalBlurSet"
+parser = argparse.ArgumentParser(description="Evaluate Laplacian variance blur detection")
+parser.add_argument("--dataset", choices=["NaturalBlurSet", "DigitalBlurSet"], default="NaturalBlurSet")
+parser.add_argument("--show-errors", action="store_true", help="Open the first ten misclassified images")
+args = parser.parse_args()
+dataset_name = args.dataset
 
 excel_path = project_dir/ "CERTH_ImageBlurDataset" / "EvaluationSet" / f"{dataset_name}.xlsx"
 data = pd.read_excel(excel_path, usecols=[0, 1])
@@ -74,8 +79,10 @@ errors.to_csv(
     index=False,
     encoding="utf-8-sig"
 )
-for _, row in errors.head(10).iterrows():
-    image_path = image_dir / f"{row['image_name']}.jpg"
+for _, row in errors.head(10).iterrows() if args.show_errors else []:
+    name = str(row["image_name"]).strip()
+    filename = name if name.lower().endswith(".jpg") else f"{name}.jpg"
+    image_path = image_dir / filename
 
     image = cv2.imdecode(
         np.fromfile(str(image_path), dtype=np.uint8),

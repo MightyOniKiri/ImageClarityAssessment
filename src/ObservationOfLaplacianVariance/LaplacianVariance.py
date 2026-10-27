@@ -12,7 +12,7 @@ training_dir = project_dir / "CERTH_ImageBlurDataset" / "TrainingSet"
 folders = [path for path in training_dir.iterdir() if path.is_dir()]
 
 output_dir = project_dir / "outputs" / "laplacian_variance"
-output_dir.mkdir(exist_ok=True)
+output_dir.mkdir(parents=True, exist_ok=True)
 
 with open(output_dir / "laplacian_scores.csv", "w", newline="", encoding="utf-8-sig") as f:
     writer = csv.writer(f)

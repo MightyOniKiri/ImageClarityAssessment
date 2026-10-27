@@ -23,7 +23,7 @@
 ## 项目目录
 
 ```text
-ImageClarityAssessmentExperiment/
+ImageClarityAssessment/
 ├── .gitignore
 ├── README.md
 ├── CERTH_ImageBlurDataset/          # 本地数据集及标签
@@ -46,3 +46,24 @@ ImageClarityAssessmentExperiment/
 当前方法对人工模糊的拦截效果更好，但自然模糊与清晰图片的分数存在较多重叠。人工模糊集的清晰图片较少，不能仅凭整体准确率判断效果，仍需关注两类误判。
 
 
+
+## 运行方式
+
+建议使用 Python 3.10 或以上版本。在项目根目录安装依赖：
+
+```powershell
+pip install -r requirements.txt
+```
+
+从上面的官方页面下载数据集，将其解压到项目根目录，确保存在 `CERTH_ImageBlurDataset/TrainingSet` 和 `CERTH_ImageBlurDataset/EvaluationSet`。图片和原始标签不上传到仓库。
+
+依次运行训练集评分、分数分析和两组测试：
+
+```powershell
+python src/ObservationOfLaplacianVariance/LaplacianVariance.py
+python src/ObservationOfLaplacianVariance/analyze_scores.py
+python src/ObservationOfLaplacianVariance/evaluate.py --dataset NaturalBlurSet
+python src/ObservationOfLaplacianVariance/evaluate.py --dataset DigitalBlurSet
+```
+
+结果保存在 `outputs/laplacian_variance/`。测试默认不弹出图片窗口；需要逐张查看前十个错例时，在测试命令后加 `--show-errors`。
