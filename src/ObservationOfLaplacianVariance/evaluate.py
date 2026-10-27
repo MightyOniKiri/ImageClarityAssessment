@@ -74,11 +74,6 @@ print(f"准确率：{accuracy:.2%}")
 
 errors = results[results["actual"] != results["predicted"]]
 
-errors.to_csv(
-    output_dir / f"{dataset_name}_errors.csv",
-    index=False,
-    encoding="utf-8-sig"
-)
 for _, row in errors.head(10).iterrows() if args.show_errors else []:
     name = str(row["image_name"]).strip()
     filename = name if name.lower().endswith(".jpg") else f"{name}.jpg"
