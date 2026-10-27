@@ -1,0 +1,2 @@
+# 数据集：忽略 data 文件夹中的内容
+CERTH_ImageBlurDataset/**
