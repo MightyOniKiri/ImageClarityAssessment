@@ -73,23 +73,3 @@ print(f"清晰被误删：{clear_as_blurry}/{clear_total}")
 print(f"准确率：{accuracy:.2%}")
 
 errors = results[results["actual"] != results["predicted"]]
-
-for _, row in errors.head(10).iterrows() if args.show_errors else []:
-    name = str(row["image_name"]).strip()
-    filename = name if name.lower().endswith(".jpg") else f"{name}.jpg"
-    image_path = image_dir / filename
-
-    image = cv2.imdecode(
-        np.fromfile(str(image_path), dtype=np.uint8),
-        cv2.IMREAD_COLOR
-    )
-
-    title = (
-        f"{row['image_name']} | actual={row['actual']} | "
-        f"score={row['score']:.2f}"
-    )
-
-    cv2.namedWindow(title, cv2.WINDOW_NORMAL)
-    cv2.imshow(title, image)
-    cv2.waitKey(0)  # 按任意键查看下一张
-    cv2.destroyAllWindows()
