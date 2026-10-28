@@ -8,7 +8,11 @@ from clarity import laplacian_score, tenengrad_score
 
 # 定义终端可以输入的参数
 parser = argparse.ArgumentParser(description="检测图片是否模糊")
-parser.add_argument("--image", required=True, help="图片路径")
+parser.add_argument(
+    "--image", 
+    required=True, 
+    help="图片路径"
+)
 parser.add_argument(
     "--method",
     choices=["laplacian", "tenengrad"],
