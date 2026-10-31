@@ -103,6 +103,7 @@ class train():
         plt.xlabel('Epoch')
         plt.ylabel('Loss')
         plt.title('Training and validation loss')
+        plt.grid(True)
         plt.legend()
 
         # 保存到项目目录
@@ -123,6 +124,7 @@ class train():
         plt.xlabel('Epoch')
         plt.ylabel('Accuracy')
         plt.title('Training and validation accuracy')
+        plt.grid(True)
         plt.legend()
 
         # 保存到项目目录

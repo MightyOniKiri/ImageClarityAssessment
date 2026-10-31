@@ -7,7 +7,7 @@ from model import train
 from data_loader import class_names, device
 
 def main():
-    epochs = 5
+    epochs = 50
     train_model = train()
     model_ft = models.resnet18(weights = models.ResNet18_Weights.IMAGENET1K_V1)
     
